@@ -1,4 +1,7 @@
+package singleton;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 
 import static io.github.bonigarcia.wdm.DriverManagerType.*;
 
@@ -18,6 +21,10 @@ public class LazySingleton {
 
     public void getChromeDriver() {
         WebDriverManager.getInstance(CHROME).setup();
+    }
+
+    public void closeBrouser(WebDriver webDriver) {
+        if (webDriver != null) webDriver.quit();
     }
 
 }
