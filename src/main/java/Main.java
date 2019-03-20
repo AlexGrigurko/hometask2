@@ -1,17 +1,17 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import singleton.LazySingleton;
+import singleton.DriverHolder;
 
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        LazySingleton.getInstance().getChromeDriver();
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = DriverHolder.getDriver("other");
 
-        driver.get("https://www.google.com.ua/");
+        driver.get("https://google.com");
         Thread.sleep(3000);
 
-        LazySingleton.getInstance().closeBrouser(driver);
+        DriverHolder.shutDown(driver);
+
     }
 }
